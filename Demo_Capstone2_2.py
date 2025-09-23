@@ -518,7 +518,7 @@ def summarise_events_with_ai(_events_by_index, user, day):
         st.error("`google-generativeai` library not installed. Please run `pip install google-generativeai`.")
         return "AI library not available."
 
-    GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBSZaQotSdsh0Fwc_NwrWyoVlL1O4Cp2rA")
+    GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
     if not GEMINI_API_KEY:
         st.warning("GEMINI_API_KEY environment variable not found. Skipping AI summary.")
         return "AI summarization failed: API key not configured."
@@ -987,4 +987,5 @@ if st.session_state.run_complete:
                         st.toast(f"Investigation ready in 'Investigations' tab.", icon="✅")
                         
     with tab3:
+
         show_investigation_ui(st.session_state.get("last_investigation"))
